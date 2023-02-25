@@ -10,14 +10,15 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            let data = new URLSearchParams()
+            data.append("username",username)
+            data.append("password",password)
             const response = await fetch('https://job-engine-api.onrender.com/login',{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/x-www-form-urlencoded"
                 },
-                body:JSON.stringify({
-                    username,password
-                })
+                body:data
             })
             return response.json()
             
